@@ -1,0 +1,15 @@
+C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.businesslayer\obj\Debug\net6.0\api.businesslayer.csproj.AssemblyReference.cache
+C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.businesslayer\obj\Debug\net6.0\api.businesslayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.businesslayer\obj\Debug\net6.0\api.businesslayer.AssemblyInfoInputs.cache
+C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.businesslayer\obj\Debug\net6.0\api.businesslayer.AssemblyInfo.cs
+C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.businesslayer\obj\Debug\net6.0\api.businesslayer.csproj.CoreCompileInputs.cache
+C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.businesslayer\bin\Debug\net6.0\api.businesslayer.deps.json
+C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.businesslayer\bin\Debug\net6.0\api.businesslayer.dll
+C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.businesslayer\bin\Debug\net6.0\api.businesslayer.pdb
+C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.businesslayer\bin\Debug\net6.0\api.common.dll
+C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.businesslayer\bin\Debug\net6.0\api.common.pdb
+C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.businesslayer\obj\Debug\net6.0\api.businesslayer.csproj.CopyComplete
+C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.businesslayer\obj\Debug\net6.0\api.businesslayer.dll
+C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.businesslayer\obj\Debug\net6.0\refint\api.businesslayer.dll
+C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.businesslayer\obj\Debug\net6.0\api.businesslayer.pdb
+C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.businesslayer\obj\Debug\net6.0\ref\api.businesslayer.dll
