@@ -1,6 +1,7 @@
 ﻿using api.common.Interface;
 using api.common.model;
 using api.dataaccess.entityframework.data;
+using api.dataaccess.entityframework.model;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -31,9 +32,21 @@ namespace api.dataaccess
             return _mapper.Map<IEnumerable<Attendance>>(attendance);
         }
 
-        public async Task<Attendance> GetAttendanceAsync(int id)
+        public async Task<IEnumerable<Attendance>> GetAttendanceByUserIdAsync(int userId)
         {
-            throw new NotImplementedException();
+            var attendance = await _dbContext.TblAttendances
+                 .Where(x => x.UserId == userId).
+                 ToListAsync();
+
+            return _mapper.Map<IEnumerable<Attendance>>(attendance);
+        }
+
+        public async Task<Attendance> CreateAttendanceAsync(Attendance attendance)
+        {
+            var data = _dbContext.TblAttendances.AddAsync(_mapper.Map<TblAttendance>(attendance));
+            await _dbContext.SaveChangesAsync();
+
+            return _mapper.Map<Attendance>(data); 
         }
     }
 }

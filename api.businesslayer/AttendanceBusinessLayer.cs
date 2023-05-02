@@ -23,9 +23,15 @@ namespace api.businesslayer
             return attendance;
         }
 
-        public async Task<Attendance> GetAttendanceAsync(int id)
+        public async Task<IEnumerable<Attendance>> GetAttendanceByUserIdAsync(int userId)
         {
-            throw new NotImplementedException();
+            var attendance = await _attendanceDataAccess.GetAttendanceByUserIdAsync(userId);
+            return attendance;
+        }
+
+        public async Task<Attendance> CreateAttendanceAsync(Attendance attendance)
+        {
+            return await _attendanceDataAccess.CreateAttendanceAsync(attendance);
         }
     }
 }

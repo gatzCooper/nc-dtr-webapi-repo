@@ -32,5 +32,20 @@ namespace NC_Attendance_Api.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpGet("{userId}")]
+        public async Task<IActionResult> GetAttendanceByUserIdAsync(int userId)
+        {
+            try
+            {
+                var attendance = await _attendanceBusinessLayer.GetAttendanceByUserIdAsync(userId);
+
+                return Ok(attendance);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

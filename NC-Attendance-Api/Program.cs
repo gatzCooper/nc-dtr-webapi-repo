@@ -7,22 +7,31 @@ using api.dataaccess.entityframework.model;
 using api.dataaccess.entityframework.profileMapping;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting.Internal;
+using Org.BouncyCastle.Crypto.Utilities;
 using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var services = builder.Services;
+
 
 // Add services to the container.
 builder.Services
     .AddTransient<IUserBusinessLayer, UserBusinessLayer>()
     .AddTransient<IUserDataAccess, UserDataAccess>()
     .AddTransient<IAttendanceBusinessLayer, AttendanceBusinessLayer>()
-    .AddTransient<IAttendanceDataAccess, AttendanceDataAccess>();
+    .AddTransient<IAttendanceDataAccess, AttendanceDataAccess>()
+    .AddTransient<IScheduleBusinessLayer, ScheduleBusinessLayer>()
+    .AddTransient<IScheduleDataAccess, ScheduleDataAccess>();
 
 //Add Automapper
 builder.Services.AddSingleton(new MapperConfiguration(cfg =>
 {
     cfg.CreateMap<TblUser, User>();
     cfg.CreateMap<TblAttendance, Attendance>();
+    cfg.CreateMap<TblSchedule, Schedule>();
   
 }).CreateMapper());
 
@@ -33,11 +42,18 @@ builder.Services.AddSwaggerGen();
 
 
 // Configuration
-builder.Configuration.AddJsonFile("appsettings.json", optional: false);
+var configurationBuilder = new ConfigurationBuilder()
+          .SetBasePath(Directory.GetCurrentDirectory())
+          .AddJsonFile("appsettings.json");
+
+var configuration = configurationBuilder.Build();
 
 // Services
+
+var dbConnection = configuration["MySqlConnection"];
+
 builder.Services.AddDbContext<FaceAttendanceDbContext>(options =>
-    options.UseMySQL(builder.Configuration.GetConnectionString("MySqlConnection")));
+    options.UseMySQL(dbConnection));
 
 var corsPolicy = "CorsPolicy";
 builder.Services.AddCors(options =>

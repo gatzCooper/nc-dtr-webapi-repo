@@ -10,6 +10,7 @@ namespace api.common.Interface
     public interface IAttendanceDataAccess
     {
         Task<IEnumerable<Attendance>> GetAllAttendanceAsync();
-        Task<Attendance> GetAttendanceAsync(int id);
+        Task<IEnumerable<Attendance>> GetAttendanceByUserIdAsync(int userId);
+        Task<Attendance> CreateAttendanceAsync(Attendance attendance);
     }
 }

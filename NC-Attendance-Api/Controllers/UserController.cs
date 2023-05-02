@@ -57,6 +57,22 @@ namespace NC_Attendance_Api.Controllers
             }
         }
 
+        [HttpGet("{userName}")]
+        public async Task<IActionResult> GetUserByUserNameAsync(string userName)
+        {
+            try
+            {
+                var user = await _userBusinessLayer.GetUserByUsernameAsync(userName);
+                if (user == null) return NoContent();
+
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
 
     }
 }
