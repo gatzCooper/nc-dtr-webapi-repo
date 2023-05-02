@@ -4,7 +4,6 @@ using api.common.model;
 using api.dataaccess;
 using api.dataaccess.entityframework.data;
 using api.dataaccess.entityframework.model;
-using api.dataaccess.entityframework.profileMapping;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;

@@ -942,6 +942,7 @@
         "dependencies": {
           "AutoMapper": "12.0.1",
           "MySql.EntityFrameworkCore": "5.0.16",
+          "SmsClient": "1.0.0",
           "api.common": "1.0.0"
         },
         "compile": {
@@ -954,6 +955,9 @@
       "SmsClient/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
         "compile": {
           "bin/placeholder/SmsClient.dll": {}
         },

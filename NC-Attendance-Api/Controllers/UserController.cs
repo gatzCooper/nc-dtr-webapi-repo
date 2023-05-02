@@ -63,7 +63,7 @@ namespace NC_Attendance_Api.Controllers
             try
             {
                 var user = await _userBusinessLayer.GetUserByUsernameAsync(userName);
-                if (user == null) return NoContent();
+                if (user == null) return NotFound();
 
                 return Ok(user);
             }

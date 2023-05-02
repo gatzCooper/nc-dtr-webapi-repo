@@ -120,9 +120,24 @@ namespace api.businesslayer
             return _userDataAccess.IsNumberValid(number);
         }
 
-        public Task<int> GetUserIdByContactNumberAsync(string number)
+        public async Task<int> GetUserIdByContactNumberAsync(string number)
         {
-            throw new NotImplementedException();
+            return await _userDataAccess.GetUserIdByContactNumberAsync(number);
+        }
+
+        public async Task<UserOtp> UpsertUserOtpAsync(string number)
+        {
+
+            var otpResponse = await _sempaphoreClient.SendOtpAsync(number);
+            var otpCode = otpResponse.code;
+
+            return await _userDataAccess.UpsertUserOtpAsync(number, otpCode);
+            
+        }
+
+        public Task<int> GetUserOtp(int userId)
+        {
+            return _userDataAccess.GetUserOtp(userId);
         }
     }
 }

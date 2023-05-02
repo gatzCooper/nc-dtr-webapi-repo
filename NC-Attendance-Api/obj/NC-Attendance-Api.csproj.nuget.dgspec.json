@@ -174,6 +174,9 @@
             "projectReferences": {
               "C:\\Users\\GAMING PC\\Documents\\Demowebinar\\demorepos\\az-devopsdemo-web\\NC-Attendance-Api\\api.common\\api.common.csproj": {
                 "projectPath": "C:\\Users\\GAMING PC\\Documents\\Demowebinar\\demorepos\\az-devopsdemo-web\\NC-Attendance-Api\\api.common\\api.common.csproj"
+              },
+              "C:\\Users\\GAMING PC\\Documents\\Demowebinar\\demorepos\\az-devopsdemo-web\\NC-Attendance-Api\\SmsClient\\SmsClient.csproj": {
+                "projectPath": "C:\\Users\\GAMING PC\\Documents\\Demowebinar\\demorepos\\az-devopsdemo-web\\NC-Attendance-Api\\SmsClient\\SmsClient.csproj"
               }
             }
           }
@@ -359,6 +362,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
