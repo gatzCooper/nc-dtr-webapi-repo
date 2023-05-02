@@ -4,6 +4,7 @@ using api.dataaccess.entityframework.data;
 using api.dataaccess.entityframework.model;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using SmsClient.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,11 +17,13 @@ namespace api.dataaccess
     {
         private readonly FaceAttendanceDbContext _dbContext;
         private readonly IMapper _mapper;
+        private readonly ISemaphoreSmsClient _sempahoreClient;
 
-        public UserDataAccess(FaceAttendanceDbContext context, IMapper mapper)
+        public UserDataAccess(FaceAttendanceDbContext context, IMapper mapper, ISemaphoreSmsClient semaphoreClient)
         {
             _dbContext = context;
             _mapper = mapper;
+            _sempahoreClient = semaphoreClient;
         }
 
         public async Task<User> CreateUserAsync(User user)
@@ -87,5 +90,36 @@ namespace api.dataaccess
 
             return userId;
         }
+
+        public async Task<UserOtp> UpsertUserOtpAsync(string number, int otpCode)
+        {
+              
+                var userId = await GetUserIdByContactNumberAsync(number);
+
+                var otpData = await _dbContext.TblUserOtp
+                            .Where(o => o.UserId == userId)
+                            .FirstOrDefaultAsync();
+
+                var otp = new UserOtp()
+                {
+                    UserId = userId,
+                    OtpCode = otpCode
+                };            
+
+                var updateOtp = _dbContext.TblUserOtp.Update(_mapper.Map<TblUserOtp>(otp));
+                return _mapper.Map<UserOtp>(otp);
+            
+        }
+
+        public async Task<int> GetUserOtp(int userId)
+        {
+            var otpData = await _dbContext.TblUserOtp
+                            .Where(o => o.UserId == userId)
+                            .FirstOrDefaultAsync();
+            var otp = otpData.OtpCode;
+
+            return otp;
+        }
+
     }
 }

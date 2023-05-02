@@ -49,12 +49,52 @@ namespace NC_Attendance_Api.Controllers
             }       
             
         }
+        [HttpPost("GenerateOtp")]
+        public async Task<IActionResult> GenerateOtp(string number)
+        {
+            try
+            {
+                if (await _userBusinessLayer.IsNumberValid(number))
+                {
+                  var otp = _userBusinessLayer.UpsertUserOtpAsync(number);
 
-        //[HttpGet("generateotp/{number}")]
-        //public async Task<IActionResult> GenerateOtp(int number)
+                  return Ok(otp);
+                }
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new ResponseError()
+                {
+                    Exception = ex,
+                    StatusCode = StatusCodes.Status500InternalServerError
+                });
+            }
+
+        }
+
+        //[HttpPost("updatePassword")] 
+        //public async Task<IActionResult> UpdatePassword([FromBody] ChangePassRequest request)
         //{
-            
-        //}
+        //    try
+        //    {
+        //        var userId = await _userBusinessLayer.GetUserIdByContactNumberAsync(request.number);
+        //        var otpCodeFromDb = await _userBusinessLayer.GetUserOtp(userId);
 
+        //        if(request.otpcode == otpCodeFromDb)
+        //        {
+
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(StatusCodes.Status500InternalServerError, new ResponseError()
+        //        {
+        //            Exception = ex,
+        //            StatusCode = StatusCodes.Status500InternalServerError
+        //        });
+        //    }           
+        //}
+       
     }
 }

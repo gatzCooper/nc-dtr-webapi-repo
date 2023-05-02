@@ -18,5 +18,7 @@ namespace api.common.Interface
         Task<User> CreateUserAsync(User user);
         Task<bool> IsNumberValid(string number);
         Task<int> GetUserIdByContactNumberAsync(string number);
+        Task<UserOtp> UpsertUserOtpAsync(string number);
+        Task<int> GetUserOtp(int userId);
     }
 }

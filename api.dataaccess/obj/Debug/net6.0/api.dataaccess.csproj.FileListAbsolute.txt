@@ -15,3 +15,5 @@ C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendan
 C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.dataaccess\obj\Debug\net6.0\api.dataaccess.pdb
 C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.dataaccess\obj\Debug\net6.0\api.dataaccess.genruntimeconfig.cache
 C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.dataaccess\obj\Debug\net6.0\ref\api.dataaccess.dll
+C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.dataaccess\bin\Debug\net6.0\SmsClient.dll
+C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.dataaccess\bin\Debug\net6.0\SmsClient.pdb
