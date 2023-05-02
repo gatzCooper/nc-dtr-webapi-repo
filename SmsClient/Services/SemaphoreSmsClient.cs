@@ -9,11 +9,7 @@ namespace SmsClient.Services
 {
     public class SemaphoreSmsClient : ISemaphoreSmsClient
     {
-        private readonly string _apiKey;
-        public SemaphoreSmsClient()
-        {
-            //_apiKey = 
-        }
+        private readonly string _apiKey = "a5abd33c5ee98cc1b2a3e0372e9d7e76";
 
         public Task<OtpResponse> SendOtpAsync(string number)
         {

@@ -912,6 +912,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "SmsClient": "1.0.0",
           "System.IdentityModel.Tokens.Jwt": "6.29.0",
           "api.common": "1.0.0"
         },
@@ -948,6 +949,16 @@
         },
         "runtime": {
           "bin/placeholder/api.dataaccess.dll": {}
+        }
+      },
+      "SmsClient/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/SmsClient.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SmsClient.dll": {}
         }
       }
     }
@@ -2600,6 +2611,11 @@
       "type": "project",
       "path": "../api.dataaccess/api.dataaccess.csproj",
       "msbuildProject": "../api.dataaccess/api.dataaccess.csproj"
+    },
+    "SmsClient/1.0.0": {
+      "type": "project",
+      "path": "../SmsClient/SmsClient.csproj",
+      "msbuildProject": "../SmsClient/SmsClient.csproj"
     }
   },
   "projectFileDependencyGroups": {

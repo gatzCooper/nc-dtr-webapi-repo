@@ -66,5 +66,26 @@ namespace api.dataaccess
 
            return _mapper.Map<User>(updateUser.Entity);
         }
+
+        public async Task<bool> IsNumberValid(string number)
+        {
+            var user = await _dbContext.TblUsers
+                        .Where(u => u.Contact == number)
+                        .AsNoTracking()
+                        .FirstOrDefaultAsync();
+
+            return user?.Contact != null;
+        }
+
+        public async Task<int> GetUserIdByContactNumberAsync(string number)
+        {
+            var user = await _dbContext.TblUsers
+                    .Where(u => u.Contact == number)
+                    .FirstOrDefaultAsync();
+
+            var userId = user.Id;
+
+            return userId;
+        }
     }
 }

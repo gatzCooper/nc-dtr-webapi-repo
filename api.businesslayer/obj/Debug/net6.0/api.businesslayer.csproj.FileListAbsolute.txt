@@ -13,3 +13,5 @@ C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendan
 C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.businesslayer\obj\Debug\net6.0\refint\api.businesslayer.dll
 C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.businesslayer\obj\Debug\net6.0\api.businesslayer.pdb
 C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.businesslayer\obj\Debug\net6.0\ref\api.businesslayer.dll
+C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.businesslayer\bin\Debug\net6.0\SmsClient.dll
+C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.businesslayer\bin\Debug\net6.0\SmsClient.pdb

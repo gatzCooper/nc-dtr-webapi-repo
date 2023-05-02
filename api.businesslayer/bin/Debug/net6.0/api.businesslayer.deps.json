@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "api.businesslayer/1.0.0": {
         "dependencies": {
+          "SmsClient": "1.0.0",
           "System.IdentityModel.Tokens.Jwt": "6.29.0",
           "api.common": "1.0.0"
         },
@@ -106,6 +107,11 @@
         },
         "runtime": {
           "api.common.dll": {}
+        }
+      },
+      "SmsClient/1.0.0": {
+        "runtime": {
+          "SmsClient.dll": {}
         }
       }
     }
@@ -215,6 +221,11 @@
       "hashPath": "system.text.json.4.7.2.nupkg.sha512"
     },
     "api.common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SmsClient/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

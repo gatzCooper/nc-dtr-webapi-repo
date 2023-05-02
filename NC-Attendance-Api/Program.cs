@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting.Internal;
 using Org.BouncyCastle.Crypto.Utilities;
+using SmsClient.Services;
 using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,7 +25,10 @@ builder.Services
     .AddTransient<IAttendanceBusinessLayer, AttendanceBusinessLayer>()
     .AddTransient<IAttendanceDataAccess, AttendanceDataAccess>()
     .AddTransient<IScheduleBusinessLayer, ScheduleBusinessLayer>()
-    .AddTransient<IScheduleDataAccess, ScheduleDataAccess>();
+    .AddTransient<IScheduleDataAccess, ScheduleDataAccess>()
+    .AddTransient<ISubjectBusinessLayer, SubjectBusinessLayer>()
+    .AddTransient<ISubjectDataAccess, SubjectDataAccess>()
+    .AddScoped<ISemaphoreSmsClient, SemaphoreSmsClient>();
 
 //Add Automapper
 builder.Services.AddSingleton(new MapperConfiguration(cfg =>
@@ -32,6 +36,8 @@ builder.Services.AddSingleton(new MapperConfiguration(cfg =>
     cfg.CreateMap<TblUser, User>();
     cfg.CreateMap<TblAttendance, Attendance>();
     cfg.CreateMap<TblSchedule, Schedule>();
+    cfg.CreateMap<TblSubject, Subject>();
+    cfg.CreateMap<TblUserOtp,  UserOtp>();
   
 }).CreateMapper());
 
