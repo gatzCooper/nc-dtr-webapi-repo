@@ -482,3 +482,16 @@ $RECYCLE.BIN/
 /NC-Attendance-Api/obj/Debug/net6.0/NC-Attendance-Api.GeneratedMSBuildEditorConfig.editorconfig
 /NC-Attendance-Api/obj/Debug/net6.0/NC-Attendance-Api.csproj.AssemblyReference.cache
 /NC-Attendance-Api/obj/Debug/net6.0/NC-Attendance-Api.assets.cache
+/api.businesslayer/obj/Debug/net6.0/api.businesslayer.pdb
+/api.businesslayer/obj/Debug/net6.0/api.businesslayer.dll
+/api.common/bin/Debug/net6.0/api.common.pdb
+/api.common/bin/Debug/net6.0/api.common.dll
+/api.common/obj/Debug/net6.0/ref/api.common.dll
+/api.dataaccess/bin/Debug/net6.0/api.dataaccess.pdb
+/api.dataaccess/bin/Debug/net6.0/api.dataaccess.dll
+/api.dataaccess/bin/Debug/net6.0/api.common.pdb
+/api.dataaccess/bin/Debug/net6.0/api.common.dll
+/api.dataaccess/obj/Debug/net6.0/api.dataaccess.pdb
+/api.dataaccess/obj/Debug/net6.0/api.dataaccess.dll
+/NC-Attendance-Api/obj/Debug/net6.0/NC-Attendance-Api.pdb
+/NC-Attendance-Api/obj/Debug/net6.0/NC-Attendance-Api.dll
