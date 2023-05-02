@@ -13,6 +13,7 @@ namespace NC_Attendance_Api.Controllers
        private readonly ILogger<AuthController> _logger;
        private readonly IUserBusinessLayer _userBusinessLayer;
 
+
         public AuthController(ILogger<AuthController> logger, IUserBusinessLayer userBusinessLayer)
         {
             _logger = logger;
@@ -47,7 +48,13 @@ namespace NC_Attendance_Api.Controllers
                 return BadRequest(ex.Message);
             }       
             
-        }     
+        }
+
+        //[HttpGet("generateotp/{number}")]
+        //public async Task<IActionResult> GenerateOtp(int number)
+        //{
+            
+        //}
 
     }
 }

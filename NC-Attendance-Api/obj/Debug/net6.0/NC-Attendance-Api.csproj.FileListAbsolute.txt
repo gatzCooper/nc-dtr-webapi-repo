@@ -67,3 +67,6 @@ C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendan
 C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\NC-Attendance-Api\obj\Debug\net6.0\NC-Attendance-Api.pdb
 C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\NC-Attendance-Api\obj\Debug\net6.0\NC-Attendance-Api.genruntimeconfig.cache
 C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\NC-Attendance-Api\obj\Debug\net6.0\ref\NC-Attendance-Api.dll
+C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\NC-Attendance-Api\obj\Debug\net6.0\NC-Attendance-Api.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\NC-Attendance-Api\bin\Debug\net6.0\SmsClient.dll
+C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\NC-Attendance-Api\bin\Debug\net6.0\SmsClient.pdb

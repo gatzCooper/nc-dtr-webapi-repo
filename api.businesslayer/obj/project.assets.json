@@ -205,6 +205,16 @@
         "runtime": {
           "bin/placeholder/api.common.dll": {}
         }
+      },
+      "SmsClient/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/SmsClient.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SmsClient.dll": {}
+        }
       }
     }
   },
@@ -725,10 +735,16 @@
       "type": "project",
       "path": "../api.common/api.common.csproj",
       "msbuildProject": "../api.common/api.common.csproj"
+    },
+    "SmsClient/1.0.0": {
+      "type": "project",
+      "path": "../SmsClient/SmsClient.csproj",
+      "msbuildProject": "../SmsClient/SmsClient.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "SmsClient >= 1.0.0",
       "System.IdentityModel.Tokens.Jwt >= 6.29.0",
       "api.common >= 1.0.0"
     ]
@@ -768,6 +784,9 @@
           "projectReferences": {
             "C:\\Users\\GAMING PC\\Documents\\Demowebinar\\demorepos\\az-devopsdemo-web\\NC-Attendance-Api\\api.common\\api.common.csproj": {
               "projectPath": "C:\\Users\\GAMING PC\\Documents\\Demowebinar\\demorepos\\az-devopsdemo-web\\NC-Attendance-Api\\api.common\\api.common.csproj"
+            },
+            "C:\\Users\\GAMING PC\\Documents\\Demowebinar\\demorepos\\az-devopsdemo-web\\NC-Attendance-Api\\SmsClient\\SmsClient.csproj": {
+              "projectPath": "C:\\Users\\GAMING PC\\Documents\\Demowebinar\\demorepos\\az-devopsdemo-web\\NC-Attendance-Api\\SmsClient\\SmsClient.csproj"
             }
           }
         }

@@ -24,6 +24,7 @@ namespace api.dataaccess.entityframework.data
         public virtual DbSet<TblSchedule> TblSchedules { get; set; }
         public virtual DbSet<TblSubject> TblSubjects { get; set; }
         public virtual DbSet<TblUser> TblUsers { get; set; }
+        public virtual DbSet<TblUserOtp> TblUserOtp { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -289,6 +290,24 @@ namespace api.dataaccess.entityframework.data
                     .IsRequired()
                     .HasMaxLength(100)
                     .HasColumnName("username");
+            });
+
+
+            modelBuilder.Entity<TblUserOtp>(entity =>
+            {
+                entity.HasKey(e => e.UserOtpId)
+                    .HasName("PRIMARY");
+
+                entity.ToTable("tbl_userotp");
+
+                entity.Property(e => e.UserOtpId).HasColumnType("int(11)");
+
+
+                entity.Property(e => e.UserId).HasColumnType("int(11)");
+
+                entity.Property(e => e.OtpCode)
+                    .IsRequired()
+                    .HasMaxLength(50);
             });
 
             OnModelCreatingPartial(modelBuilder);

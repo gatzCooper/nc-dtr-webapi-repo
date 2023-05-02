@@ -2,6 +2,7 @@
 using api.common.model;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.VisualBasic;
+using SmsClient.Services;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -17,9 +18,11 @@ namespace api.businesslayer
     public class UserBusinessLayer : IUserBusinessLayer
     {
         private readonly IUserDataAccess _userDataAccess;
-        public UserBusinessLayer(IUserDataAccess userDataAccess)
+        private readonly ISemaphoreSmsClient _sempaphoreClient;
+        public UserBusinessLayer(IUserDataAccess userDataAccess, ISemaphoreSmsClient semaphoreClient)
         {
             _userDataAccess = userDataAccess;
+            _sempaphoreClient = semaphoreClient;
         }
         public async Task<User> GetUserLoginCredentials(string email, string password)
         {
@@ -110,6 +113,16 @@ namespace api.businesslayer
         public async Task<User> CreateUserAsync(User user)
         {
             return await _userDataAccess.CreateUserAsync(user);
+        }
+
+        public Task<bool> IsNumberValid(string number)
+        {           
+            return _userDataAccess.IsNumberValid(number);
+        }
+
+        public Task<int> GetUserIdByContactNumberAsync(string number)
+        {
+            throw new NotImplementedException();
         }
     }
 }
