@@ -187,6 +187,9 @@ namespace api.dataaccess.entityframework.data
 
             modelBuilder.Entity<TblUser>(entity =>
             {
+                entity.HasKey(e => e.Id)
+                    .HasName("PRIMARY");
+
                 entity.ToTable("tbl_users");
 
                 entity.Property(e => e.Id)
@@ -194,7 +197,6 @@ namespace api.dataaccess.entityframework.data
                     .HasColumnName("id");
 
                 entity.Property(e => e.Address)
-                    .IsRequired()
                     .HasMaxLength(255)
                     .HasColumnName("address");
 
@@ -212,7 +214,6 @@ namespace api.dataaccess.entityframework.data
                     .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.Contact)
-                    .IsRequired()
                     .HasMaxLength(11)
                     .HasColumnName("contact");
 
@@ -221,13 +222,11 @@ namespace api.dataaccess.entityframework.data
                     .HasDefaultValueSql("'current_timestamp()'");
 
                 entity.Property(e => e.Department)
-                    .IsRequired()
                     .HasMaxLength(100)
                     .HasColumnName("department");
 
 
                 entity.Property(e => e.EmailCode)
-                    .IsRequired()
                     .HasMaxLength(255)
                     .HasColumnName("emailCode");
 
@@ -237,7 +236,6 @@ namespace api.dataaccess.entityframework.data
                     .HasColumnName("fname");
 
                 entity.Property(e => e.Gender)
-                    .IsRequired()
                     .HasMaxLength(10)
                     .HasColumnName("gender");
 
@@ -247,7 +245,6 @@ namespace api.dataaccess.entityframework.data
                     .HasColumnName("lname");
 
                 entity.Property(e => e.Mname)
-                    .IsRequired()
                     .HasMaxLength(50)
                     .HasColumnName("mname");
 
@@ -257,7 +254,6 @@ namespace api.dataaccess.entityframework.data
                     .HasColumnName("password");
 
                 entity.Property(e => e.Pic)
-                    .IsRequired()
                     .HasMaxLength(255)
                     .HasColumnName("pic")
                     .HasDefaultValueSql("'''default.png'''");
@@ -268,22 +264,18 @@ namespace api.dataaccess.entityframework.data
                     .HasColumnName("role");
 
                 entity.Property(e => e.Schedule)
-                    .IsRequired()
                     .HasMaxLength(100)
                     .HasColumnName("schedule");
 
                 entity.Property(e => e.Status)
-                    .IsRequired()
                     .HasMaxLength(50)
                     .HasColumnName("status");
 
                 entity.Property(e => e.TrackFace)
-                    .IsRequired()
                     .HasMaxLength(100)
                     .HasColumnName("trackFace");
 
                 entity.Property(e => e.TrainedFaces)
-                    .IsRequired()
                     .HasMaxLength(100);
 
                 entity.Property(e => e.email)

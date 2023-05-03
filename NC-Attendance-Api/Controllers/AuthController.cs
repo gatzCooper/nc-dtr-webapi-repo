@@ -25,7 +25,7 @@ namespace NC_Attendance_Api.Controllers
         {
             try
             {
-                var userData = await _userBusinessLayer.GetUserLoginCredentials(request.userName, request.password);
+                var userData = await _userBusinessLayer.GetUserLoginCredentials(request.username, request.password);
 
                 if (userData == null)
                 {
@@ -33,7 +33,7 @@ namespace NC_Attendance_Api.Controllers
                 }
                 Random random = new Random();
                 int randomNumber = random.Next(50);
-                var token = _userBusinessLayer.GenerateJwtToken(randomNumber, request.userName);
+                var token = _userBusinessLayer.GenerateJwtToken(randomNumber, request.username);
 
                 var user = new
                 {

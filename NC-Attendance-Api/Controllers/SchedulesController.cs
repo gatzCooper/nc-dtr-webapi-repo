@@ -7,12 +7,12 @@ namespace NC_Attendance_Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ScheduleController : ControllerBase
+    public class SchedulesController : ControllerBase
     {
-        private readonly ILogger<ScheduleController> _logger;
+        private readonly ILogger<SchedulesController> _logger;
         private readonly IScheduleBusinessLayer _scheduleBusinessLayer;
 
-        public ScheduleController(ILogger<ScheduleController> logger, IScheduleBusinessLayer scheduleBusinesslayer)
+        public SchedulesController(ILogger<SchedulesController> logger, IScheduleBusinessLayer scheduleBusinesslayer)
         {
             _logger = logger;
             _scheduleBusinessLayer = scheduleBusinesslayer;
