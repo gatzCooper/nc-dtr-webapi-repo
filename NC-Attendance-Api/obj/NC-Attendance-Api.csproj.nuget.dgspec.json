@@ -35,6 +35,12 @@
             "projectReferences": {
               "C:\\Users\\GAMING PC\\Documents\\Demowebinar\\demorepos\\az-devopsdemo-web\\NC-Attendance-Api\\api.common\\api.common.csproj": {
                 "projectPath": "C:\\Users\\GAMING PC\\Documents\\Demowebinar\\demorepos\\az-devopsdemo-web\\NC-Attendance-Api\\api.common\\api.common.csproj"
+              },
+              "C:\\Users\\GAMING PC\\Documents\\Demowebinar\\demorepos\\az-devopsdemo-web\\NC-Attendance-Api\\api.dataaccess\\api.dataaccess.csproj": {
+                "projectPath": "C:\\Users\\GAMING PC\\Documents\\Demowebinar\\demorepos\\az-devopsdemo-web\\NC-Attendance-Api\\api.dataaccess\\api.dataaccess.csproj"
+              },
+              "C:\\Users\\GAMING PC\\Documents\\Demowebinar\\demorepos\\az-devopsdemo-web\\NC-Attendance-Api\\SmsClient\\SmsClient.csproj": {
+                "projectPath": "C:\\Users\\GAMING PC\\Documents\\Demowebinar\\demorepos\\az-devopsdemo-web\\NC-Attendance-Api\\SmsClient\\SmsClient.csproj"
               }
             }
           }
@@ -171,6 +177,9 @@
             "projectReferences": {
               "C:\\Users\\GAMING PC\\Documents\\Demowebinar\\demorepos\\az-devopsdemo-web\\NC-Attendance-Api\\api.common\\api.common.csproj": {
                 "projectPath": "C:\\Users\\GAMING PC\\Documents\\Demowebinar\\demorepos\\az-devopsdemo-web\\NC-Attendance-Api\\api.common\\api.common.csproj"
+              },
+              "C:\\Users\\GAMING PC\\Documents\\Demowebinar\\demorepos\\az-devopsdemo-web\\NC-Attendance-Api\\SmsClient\\SmsClient.csproj": {
+                "projectPath": "C:\\Users\\GAMING PC\\Documents\\Demowebinar\\demorepos\\az-devopsdemo-web\\NC-Attendance-Api\\SmsClient\\SmsClient.csproj"
               }
             }
           }
@@ -308,6 +317,72 @@
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
             },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\GAMING PC\\Documents\\Demowebinar\\demorepos\\az-devopsdemo-web\\NC-Attendance-Api\\SmsClient\\SmsClient.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\GAMING PC\\Documents\\Demowebinar\\demorepos\\az-devopsdemo-web\\NC-Attendance-Api\\SmsClient\\SmsClient.csproj",
+        "projectName": "SmsClient",
+        "projectPath": "C:\\Users\\GAMING PC\\Documents\\Demowebinar\\demorepos\\az-devopsdemo-web\\NC-Attendance-Api\\SmsClient\\SmsClient.csproj",
+        "packagesPath": "C:\\Users\\GAMING PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\GAMING PC\\Documents\\Demowebinar\\demorepos\\az-devopsdemo-web\\NC-Attendance-Api\\SmsClient\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\GAMING PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/INGCDaaS/IngOne/_packaging/P02516-GEP-IRG-Out/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/INGCDaaS/IngOne/_packaging/P02516-GEP-IRG-Shared/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

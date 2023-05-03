@@ -12,6 +12,7 @@
           "Microsoft.EntityFrameworkCore.Design": "5.0.16",
           "Microsoft.EntityFrameworkCore.Tools": "5.0.16",
           "MySql.EntityFrameworkCore": "5.0.16",
+          "SmsClient": "1.0.0",
           "api.common": "1.0.0"
         },
         "runtime": {
@@ -419,6 +420,14 @@
         "runtime": {
           "api.common.dll": {}
         }
+      },
+      "SmsClient/1.0.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "runtime": {
+          "SmsClient.dll": {}
+        }
       }
     }
   },
@@ -723,6 +732,11 @@
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
     },
     "api.common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SmsClient/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

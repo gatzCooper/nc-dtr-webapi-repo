@@ -4,12 +4,12 @@ using api.common.model;
 using api.dataaccess;
 using api.dataaccess.entityframework.data;
 using api.dataaccess.entityframework.model;
-using api.dataaccess.entityframework.profileMapping;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting.Internal;
 using Org.BouncyCastle.Crypto.Utilities;
+using SmsClient.Services;
 using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,20 +19,29 @@ var services = builder.Services;
 
 // Add services to the container.
 builder.Services
-    .AddTransient<IUserBusinessLayer, UserBusinessLayer>()
-    .AddTransient<IUserDataAccess, UserDataAccess>()
-    .AddTransient<IAttendanceBusinessLayer, AttendanceBusinessLayer>()
-    .AddTransient<IAttendanceDataAccess, AttendanceDataAccess>()
-    .AddTransient<IScheduleBusinessLayer, ScheduleBusinessLayer>()
-    .AddTransient<IScheduleDataAccess, ScheduleDataAccess>();
+    .AddScoped<IUserBusinessLayer, UserBusinessLayer>()
+    .AddScoped<IUserDataAccess, UserDataAccess>()
+    .AddScoped<IAttendanceBusinessLayer, AttendanceBusinessLayer>()
+    .AddScoped<IAttendanceDataAccess, AttendanceDataAccess>()
+    .AddScoped<IScheduleBusinessLayer, ScheduleBusinessLayer>()
+    .AddScoped<IScheduleDataAccess, ScheduleDataAccess>()
+    .AddScoped<ISubjectBusinessLayer, SubjectBusinessLayer>()
+    .AddScoped<ISubjectDataAccess, SubjectDataAccess>()
+    .AddScoped<ISemaphoreSmsClient, SemaphoreSmsClient>()
+
+    .AddSingleton<HttpClient>();
+
+
 
 //Add Automapper
 builder.Services.AddSingleton(new MapperConfiguration(cfg =>
 {
-    cfg.CreateMap<TblUser, User>();
-    cfg.CreateMap<TblAttendance, Attendance>();
-    cfg.CreateMap<TblSchedule, Schedule>();
-  
+    cfg.CreateMap<TblUser, User>().ReverseMap();
+    cfg.CreateMap<TblAttendance, Attendance>().ReverseMap();
+    cfg.CreateMap<TblSchedule, Schedule>().ReverseMap();
+    cfg.CreateMap<TblSubject, Subject>().ReverseMap();
+    cfg.CreateMap<TblUserOtp, UserOtp>().ReverseMap();
+
 }).CreateMapper());
 
 builder.Services.AddControllers();
@@ -53,7 +62,7 @@ var configuration = configurationBuilder.Build();
 var dbConnection = configuration["MySqlConnection"];
 
 builder.Services.AddDbContext<FaceAttendanceDbContext>(options =>
-    options.UseMySQL(dbConnection));
+    options.UseMySQL(dbConnection), ServiceLifetime.Scoped);
 
 var corsPolicy = "CorsPolicy";
 builder.Services.AddCors(options =>

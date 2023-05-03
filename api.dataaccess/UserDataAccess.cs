@@ -4,6 +4,7 @@ using api.dataaccess.entityframework.data;
 using api.dataaccess.entityframework.model;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using SmsClient.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace api.dataaccess
         public UserDataAccess(FaceAttendanceDbContext context, IMapper mapper)
         {
             _dbContext = context;
-            _mapper = mapper;
+            _mapper = mapper; ;
         }
 
         public async Task<User> CreateUserAsync(User user)
@@ -68,5 +69,80 @@ namespace api.dataaccess
 
            return _mapper.Map<User>(updateUser.Entity);
         }
+
+        public async Task<bool> IsNumberValid(string number)
+        {
+            var user = await _dbContext.TblUsers
+                        .Where(u => u.Contact == number)
+                        .AsNoTracking()
+                        .FirstOrDefaultAsync();
+
+            return user?.Contact != null;
+        }
+
+   
+        public async Task<UserOtp> UpsertUserOtpAsync(string number, int otpCode)
+        {
+            try
+            {
+
+                var id = await GetUserIdByContactNumberAsync(number);
+
+                var userId = id;
+
+                var userOtp = await _dbContext.TblUserOtp
+                    .Where(u => u.UserId == userId)
+                    .FirstOrDefaultAsync();
+
+                var otp = new UserOtp()
+                {
+                    UserId = userId,
+                    OtpCode = otpCode
+                };
+
+                if (userOtp == null)
+                {
+                    var entity = await _dbContext.Set<TblUserOtp>().AddAsync(_mapper.Map<TblUserOtp>(otp));
+                    await _dbContext.SaveChangesAsync();
+                    return _mapper.Map<UserOtp>(entity.Entity);
+                }
+
+                _mapper.Map(otp, userOtp); // Map the properties from otp to userOtp
+                _dbContext.Update(userOtp);
+
+                await _dbContext.SaveChangesAsync();
+
+                return _mapper.Map<UserOtp>(userOtp);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+        }
+
+        public async Task<int> GetUserOtp(int userId)
+        {
+            var otpData = await _dbContext.TblUserOtp
+                            .Where(o => o.UserId == userId)
+                            .FirstOrDefaultAsync();
+            var otp = otpData.OtpCode;
+
+            return otp;
+        }
+
+        private async Task<int> GetUserIdByContactNumberAsync(string number)
+        {
+            var user = await _dbContext.TblUsers
+                    .Where(u => u.Contact == number)
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync();
+
+            return user.Id;
+
+
+        }
+
+
     }
 }

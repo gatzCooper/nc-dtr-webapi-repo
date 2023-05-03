@@ -13,6 +13,7 @@ namespace NC_Attendance_Api.Controllers
        private readonly ILogger<AuthController> _logger;
        private readonly IUserBusinessLayer _userBusinessLayer;
 
+
         public AuthController(ILogger<AuthController> logger, IUserBusinessLayer userBusinessLayer)
         {
             _logger = logger;
@@ -49,7 +50,53 @@ namespace NC_Attendance_Api.Controllers
                 return BadRequest(ex.Message);
             }       
             
-        }     
+        }
+        [HttpPost("ForgotPassword")]
+        public async Task<IActionResult> GenerateOtp([FromBody] OtpRequest request)
+        {
+            try
+            {
+                 if (await _userBusinessLayer.IsNumberValid(request.code))
+                {
+                  var otp = _userBusinessLayer.UpsertUserOtpAsync(request.code);
 
+                  return Ok(otp);
+                }
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new ResponseError()
+                {
+                    Exception = ex,
+                    StatusCode = StatusCodes.Status500InternalServerError
+                });
+            }
+
+        }
+
+        //[HttpPost("updatePassword")] 
+        //public async Task<IActionResult> UpdatePassword([FromBody] ChangePassRequest request)
+        //{
+        //    try
+        //    {
+        //        var userId = await _userBusinessLayer.GetUserIdByContactNumberAsync(request.number);
+        //        var otpCodeFromDb = await _userBusinessLayer.GetUserOtp(userId);
+
+        //        if(request.otpcode == otpCodeFromDb)
+        //        {
+
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(StatusCodes.Status500InternalServerError, new ResponseError()
+        //        {
+        //            Exception = ex,
+        //            StatusCode = StatusCodes.Status500InternalServerError
+        //        });
+        //    }           
+        //}
+       
     }
 }
