@@ -495,3 +495,6 @@ $RECYCLE.BIN/
 /api.dataaccess/obj/Debug/net6.0/api.dataaccess.dll
 /NC-Attendance-Api/obj/Debug/net6.0/NC-Attendance-Api.pdb
 /NC-Attendance-Api/obj/Debug/net6.0/NC-Attendance-Api.dll
+/NC-Attendance-Api/obj/Debug/net6.0/ref/NC-Attendance-Api.dll
+/NC-Attendance-Api/obj/Debug/net6.0/refint/NC-Attendance-Api.dll
+/NC-Attendance-Api/Controllers/ScheduleController.cs
