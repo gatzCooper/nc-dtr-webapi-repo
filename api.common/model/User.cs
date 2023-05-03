@@ -8,28 +8,19 @@ namespace api.common.model
 {
     public class User
     {
-        public int Id { get; set; }
-        public string UserNo { get; set; }
+        public string userNo { get; set; }
         public string email { get; set; }
-        public string Role { get; set; }
-        public string Fname { get; set; }
-        public string Lname { get; set; }
-        public string Mname { get; set; }
-        public DateTime? Bday { get; set; }
-        public int Age { get; set; }
-        public string Gender { get; set; }
-        public string EmailCode { get; set; }
-        public string Contact { get; set; }
-        public string Address { get; set; }
-        public string Pic { get; set; }
-        public string Department { get; set; }
-        public string Schedule { get; set; }
-        public string TrackFace { get; set; }
-        public string TrainedFaces { get; set; }
-        public int AttemptNo { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string Status { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public string role { get; set; }
+        public string fName { get; set; }
+        public string lName { get; set; }
+        public string mName { get; set; }
+        public string gender { get; set; }
+        public string contact { get; set; }
+        public string address { get; set; }
+        public string department { get; set; }
+        public string userName { get; set; }
+        public string password { get; set; }
+        public string status { get; set; }
+        public DateTime createdAt { get; set; }
     }
 }

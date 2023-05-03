@@ -89,15 +89,15 @@ namespace api.businesslayer
             return tokenHandler.WriteToken(token);
         }
 
-        public Task<IEnumerable<User>> GetAllUsersAsync()
+        public async Task<IEnumerable<User>> GetAllUsersAsync()
         {
-            var users = _userDataAccess.GetAllUsersAsync();
+            var users = await _userDataAccess.GetAllUsersAsync();
             return users;
         }
 
-        public Task<User> GetUserByUsernameAsync(string username)
+        public async  Task<User> GetUserByUsernameAsync(string username)
         {
-            var user = _userDataAccess.GetUserByUsernameAsync(username);
+            var user = await  _userDataAccess.GetUserByUsernameAsync(username);
 
             return user;
         }

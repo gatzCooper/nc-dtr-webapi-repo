@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.WebRequestMethods;
 
 namespace api.dataaccess
 {
@@ -25,10 +26,11 @@ namespace api.dataaccess
 
         public async Task<User> CreateUserAsync(User user)
         {
-            var userData = _dbContext.TblUsers.AddAsync(_mapper.Map<TblUser>(user));
+            
+            var userData = await _dbContext.Set<TblUser>().AddAsync(_mapper.Map<TblUser>(user));
             await _dbContext.SaveChangesAsync();
+            return _mapper.Map<User>(userData.Entity);
 
-            return _mapper.Map<User>(userData);
         }
 
         public async Task<IEnumerable<User>> GetAllUsersAsync()

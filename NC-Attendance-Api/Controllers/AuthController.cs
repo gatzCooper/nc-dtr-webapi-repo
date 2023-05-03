@@ -24,13 +24,15 @@ namespace NC_Attendance_Api.Controllers
         {
             try
             {
-                var userData = await _userBusinessLayer.GetUserLoginCredentials(request.UserName, request.Password);
+                var userData = await _userBusinessLayer.GetUserLoginCredentials(request.userName, request.password);
 
                 if (userData == null)
                 {
                     return Unauthorized();
                 }
-                var token = _userBusinessLayer.GenerateJwtToken(userData.Id, request.UserName);
+                Random random = new Random();
+                int randomNumber = random.Next(50);
+                var token = _userBusinessLayer.GenerateJwtToken(randomNumber, request.userName);
 
                 var user = new
                 {

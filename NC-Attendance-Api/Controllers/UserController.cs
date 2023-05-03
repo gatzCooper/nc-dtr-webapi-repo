@@ -42,7 +42,7 @@ namespace NC_Attendance_Api.Controllers
                 if (userData == null)
                     return NotFound();
 
-                user.Username = userName;
+                user.userName = userName;
 
                 await _userBusinessLayer.Save(userData);
                 return Ok();
@@ -73,6 +73,25 @@ namespace NC_Attendance_Api.Controllers
             }
         }
 
+        [HttpPost]
+        public async Task<IActionResult> AddUser([FromBody] User user)
+        {
+            try
+            {
+                var userData = await _userBusinessLayer.CreateUserAsync(user);
+
+                if (userData == null) return NotFound();
+                return Ok(userData);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        //[HttpPost("Changepassword")]
+        //public async Task<IActionResult> ChangePassword([FromBody] object passwordRequest)
+        //{
 
     }
 }

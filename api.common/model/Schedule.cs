@@ -8,11 +8,11 @@ namespace api.common.model
 {
     public class Schedule
     {
-        public int ScheduleId { get; set; }
-        public int SubjectId { get; set; }
-        public int UserId { get; set; }
-        public string WorkDay { get; set; }
-        public TimeSpan StartTime { get; set; }
-        public TimeSpan EndTime { get; set; }
+        public int scheduleId { get; set; }
+        public int subjectId { get; set; }
+        public int userId { get; set; }
+        public string workDay { get; set; }
+        public TimeSpan startTime { get; set; }
+        public TimeSpan endTime { get; set; }
     }
 }

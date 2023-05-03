@@ -8,10 +8,10 @@ namespace api.common.model
 {
     public class Subject
     {
-        public int SubjectId { get; set; }
-        public string SubjectCode { get; set; }
-        public string SubjectName { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public DateTime? UpdateDate { get; set; }
+        public int subjectId { get; set; }
+        public string subjectCode { get; set; }
+        public string subjectName { get; set; }
+        public DateTime? createdDate { get; set; }
+        public DateTime? updateDate { get; set; }
     }
 }
