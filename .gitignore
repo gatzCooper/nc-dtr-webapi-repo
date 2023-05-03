@@ -281,3 +281,5 @@ mono_crash.*
 # Local Sonar
 *.scannerwork/
 /NC-Attendance-Api/obj/Debug/net6.0/NC-Attendance-Api.csproj.CoreCompileInputs.cache
+/NC-Attendance-Api/obj/Debug/net6.0/NC-Attendance-Api.csproj.AssemblyReference.cache
+/api.businesslayer/obj/Debug/net6.0/api.businesslayer.csproj.AssemblyReference.cache
