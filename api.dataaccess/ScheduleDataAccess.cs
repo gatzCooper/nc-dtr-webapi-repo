@@ -56,7 +56,7 @@ namespace api.dataaccess
 
         public async Task<Schedule> UpdateScheduleAsync(Schedule schedule)
         {
-            var updateSched = _dbContext.Update(_mapper.Map<Schedule>(schedule));
+            var updateSched = _dbContext.Update(_mapper.Map<TblSchedule>(schedule));
             await _dbContext.SaveChangesAsync();
 
             return _mapper.Map<Schedule>(updateSched.Entity);

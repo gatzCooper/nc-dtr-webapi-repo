@@ -914,7 +914,8 @@
         "dependencies": {
           "SmsClient": "1.0.0",
           "System.IdentityModel.Tokens.Jwt": "6.29.0",
-          "api.common": "1.0.0"
+          "api.common": "1.0.0",
+          "api.dataaccess": "1.0.0"
         },
         "compile": {
           "bin/placeholder/api.businesslayer.dll": {}

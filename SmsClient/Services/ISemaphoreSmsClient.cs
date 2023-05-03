@@ -9,6 +9,6 @@ namespace SmsClient.Services
 {
     public interface ISemaphoreSmsClient
     {
-        Task<OtpResponse> SendOtpAsync(string number);
+        Task<OtpResponse> SendOtpAsync(string phoneNumber);
     }
 }

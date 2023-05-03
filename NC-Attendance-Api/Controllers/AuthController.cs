@@ -49,14 +49,14 @@ namespace NC_Attendance_Api.Controllers
             }       
             
         }
-        [HttpPost("GenerateOtp")]
-        public async Task<IActionResult> GenerateOtp(string number)
+        [HttpPost("ForgotPassword")]
+        public async Task<IActionResult> GenerateOtp([FromBody] OtpRequest request)
         {
             try
             {
-                if (await _userBusinessLayer.IsNumberValid(number))
+                 if (await _userBusinessLayer.IsNumberValid(request.code))
                 {
-                  var otp = _userBusinessLayer.UpsertUserOtpAsync(number);
+                  var otp = _userBusinessLayer.UpsertUserOtpAsync(request.code);
 
                   return Ok(otp);
                 }

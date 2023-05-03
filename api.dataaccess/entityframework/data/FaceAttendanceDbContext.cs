@@ -12,6 +12,11 @@ namespace api.dataaccess.entityframework.data
     public partial class FaceAttendanceDbContext : DbContext
     {
         private readonly IConfiguration _config;
+
+        public FaceAttendanceDbContext()
+        {
+        }
+
         public FaceAttendanceDbContext(IConfiguration config)
         {
             _config = config;

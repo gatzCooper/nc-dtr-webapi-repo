@@ -73,6 +73,10 @@ namespace NC_Attendance_Api.Controllers
             }
         }
 
+        //[HttpPost("Changepassword")]
+        //public async Task<IActionResult> ChangePassword([FromBody] object passwordRequest)
+        //{
 
+        //}
     }
 }

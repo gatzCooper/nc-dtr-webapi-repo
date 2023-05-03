@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace api.common.model
 {
-    public class UserOtp
+    public class OtpRequest
     {
-        public int UserId { get; set; }
-        public int OtpCode { get; set; }
+        public string code { get; set; }
     }
 }
