@@ -19,25 +19,29 @@ var services = builder.Services;
 
 // Add services to the container.
 builder.Services
-    .AddTransient<IUserBusinessLayer, UserBusinessLayer>()
-    .AddTransient<IUserDataAccess, UserDataAccess>()
-    .AddTransient<IAttendanceBusinessLayer, AttendanceBusinessLayer>()
-    .AddTransient<IAttendanceDataAccess, AttendanceDataAccess>()
-    .AddTransient<IScheduleBusinessLayer, ScheduleBusinessLayer>()
-    .AddTransient<IScheduleDataAccess, ScheduleDataAccess>()
-    .AddTransient<ISubjectBusinessLayer, SubjectBusinessLayer>()
-    .AddTransient<ISubjectDataAccess, SubjectDataAccess>()
-    .AddScoped<ISemaphoreSmsClient, SemaphoreSmsClient>();
+    .AddScoped<IUserBusinessLayer, UserBusinessLayer>()
+    .AddScoped<IUserDataAccess, UserDataAccess>()
+    .AddScoped<IAttendanceBusinessLayer, AttendanceBusinessLayer>()
+    .AddScoped<IAttendanceDataAccess, AttendanceDataAccess>()
+    .AddScoped<IScheduleBusinessLayer, ScheduleBusinessLayer>()
+    .AddScoped<IScheduleDataAccess, ScheduleDataAccess>()
+    .AddScoped<ISubjectBusinessLayer, SubjectBusinessLayer>()
+    .AddScoped<ISubjectDataAccess, SubjectDataAccess>()
+    .AddScoped<ISemaphoreSmsClient, SemaphoreSmsClient>()
+
+    .AddSingleton<HttpClient>();
+
+
 
 //Add Automapper
 builder.Services.AddSingleton(new MapperConfiguration(cfg =>
 {
-    cfg.CreateMap<TblUser, User>();
-    cfg.CreateMap<TblAttendance, Attendance>();
-    cfg.CreateMap<TblSchedule, Schedule>();
-    cfg.CreateMap<TblSubject, Subject>();
-    cfg.CreateMap<TblUserOtp,  UserOtp>();
-  
+    cfg.CreateMap<TblUser, User>().ReverseMap();
+    cfg.CreateMap<TblAttendance, Attendance>().ReverseMap();
+    cfg.CreateMap<TblSchedule, Schedule>().ReverseMap();
+    cfg.CreateMap<TblSubject, Subject>().ReverseMap();
+    cfg.CreateMap<TblUserOtp, UserOtp>().ReverseMap();
+
 }).CreateMapper());
 
 builder.Services.AddControllers();
@@ -58,7 +62,7 @@ var configuration = configurationBuilder.Build();
 var dbConnection = configuration["MySqlConnection"];
 
 builder.Services.AddDbContext<FaceAttendanceDbContext>(options =>
-    options.UseMySQL(dbConnection));
+    options.UseMySQL(dbConnection), ServiceLifetime.Scoped);
 
 var corsPolicy = "CorsPolicy";
 builder.Services.AddCors(options =>

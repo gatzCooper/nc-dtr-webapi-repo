@@ -1,15 +1,21 @@
 ﻿using api.common.Interface;
 using api.common.model;
+using api.dataaccess.entityframework.data;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.VisualBasic;
+using Newtonsoft.Json;
+using SmsClient.Model;
 using SmsClient.Services;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Net.Http;
 using System.Reflection;
 using System.Security.Claims;
 using System.Security.Cryptography;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,11 +24,17 @@ namespace api.businesslayer
     public class UserBusinessLayer : IUserBusinessLayer
     {
         private readonly IUserDataAccess _userDataAccess;
-        private readonly ISemaphoreSmsClient _sempaphoreClient;
-        public UserBusinessLayer(IUserDataAccess userDataAccess, ISemaphoreSmsClient semaphoreClient)
+        private readonly IServiceScopeFactory _serviceScopeFactory;
+        private const string _ApiKey = "6ad148b42faaff5fd6af0619b317e41b";
+        private const string _Url = "https://api.semaphore.co/api/v4/otp";
+        private readonly HttpClient _httpClient;
+        public UserBusinessLayer(IUserDataAccess userDataAccess,
+            IServiceScopeFactory serviceScopeFactory,
+            HttpClient httpClient)
         {
             _userDataAccess = userDataAccess;
-            _sempaphoreClient = semaphoreClient;
+            _serviceScopeFactory = serviceScopeFactory;
+            _httpClient = httpClient;
         }
         public async Task<User> GetUserLoginCredentials(string email, string password)
         {
@@ -120,24 +132,57 @@ namespace api.businesslayer
             return _userDataAccess.IsNumberValid(number);
         }
 
-        public async Task<int> GetUserIdByContactNumberAsync(string number)
-        {
-            return await _userDataAccess.GetUserIdByContactNumberAsync(number);
-        }
-
-        public async Task<UserOtp> UpsertUserOtpAsync(string number)
-        {
-
-            var otpResponse = await _sempaphoreClient.SendOtpAsync(number);
-            var otpCode = otpResponse.code;
-
-            return await _userDataAccess.UpsertUserOtpAsync(number, otpCode);
-            
-        }
-
         public Task<int> GetUserOtp(int userId)
         {
             return _userDataAccess.GetUserOtp(userId);
+        }
+
+
+        public async Task<UserOtp> UpsertUserOtpAsync(string number)
+        {
+            try
+            {
+
+                var otpCode = await SendOtpAsync(number).ConfigureAwait(false);
+                //var otpCode = 234234;
+
+                return await _userDataAccess.UpsertUserOtpAsync(number, otpCode);
+       
+
+            }
+            catch (Exception ex) {
+                return null;
+            }       
+            
+        }
+
+        private async Task<int> SendOtpAsync(string phoneNumber)
+        {
+            try
+            {
+
+                using (var httpClient = new HttpClient())
+                {
+                    var message = "Your OTP Code is {otp}. DO NOT SHARE THIS TO ANYONE.";
+                    var request = new
+                    {
+                        apikey = _ApiKey,
+                        number = phoneNumber,
+                        message = message
+                    };
+                    var requestBody = JsonConvert.SerializeObject(request);
+                    var response = await httpClient.PostAsync(_Url, new StringContent(requestBody, Encoding.UTF8, "application/json"));
+                    var responseBody = await response.Content.ReadAsStringAsync();
+
+                    var otpResponse = JsonConvert.DeserializeObject<IEnumerable<OtpResponse>>(responseBody);
+                    return otpResponse.FirstOrDefault().code;
+                }
+            }
+
+            catch (Exception ex)
+            {
+                return 0;
+            }
         }
     }
 }

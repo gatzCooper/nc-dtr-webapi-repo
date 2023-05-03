@@ -1,11 +1,11 @@
+C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.common\bin\Debug\net6.0\api.common.deps.json
+C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.common\bin\Debug\net6.0\api.common.dll
+C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.common\bin\Debug\net6.0\api.common.pdb
 C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.common\obj\Debug\net6.0\api.common.csproj.AssemblyReference.cache
 C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.common\obj\Debug\net6.0\api.common.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.common\obj\Debug\net6.0\api.common.AssemblyInfoInputs.cache
 C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.common\obj\Debug\net6.0\api.common.AssemblyInfo.cs
 C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.common\obj\Debug\net6.0\api.common.csproj.CoreCompileInputs.cache
-C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.common\bin\Debug\net6.0\api.common.deps.json
-C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.common\bin\Debug\net6.0\api.common.dll
-C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.common\bin\Debug\net6.0\api.common.pdb
 C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.common\obj\Debug\net6.0\api.common.dll
 C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.common\obj\Debug\net6.0\refint\api.common.dll
 C:\Users\GAMING PC\Documents\Demowebinar\demorepos\az-devopsdemo-web\NC-Attendance-Api\api.common\obj\Debug\net6.0\api.common.pdb

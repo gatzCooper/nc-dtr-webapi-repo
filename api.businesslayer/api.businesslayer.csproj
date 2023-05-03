@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\api.common\api.common.csproj" />
+    <ProjectReference Include="..\api.dataaccess\api.dataaccess.csproj" />
     <ProjectReference Include="..\SmsClient\SmsClient.csproj" />
   </ItemGroup>
 

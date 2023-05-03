@@ -17,13 +17,11 @@ namespace api.dataaccess
     {
         private readonly FaceAttendanceDbContext _dbContext;
         private readonly IMapper _mapper;
-        private readonly ISemaphoreSmsClient _sempahoreClient;
 
-        public UserDataAccess(FaceAttendanceDbContext context, IMapper mapper, ISemaphoreSmsClient semaphoreClient)
+        public UserDataAccess(FaceAttendanceDbContext context, IMapper mapper)
         {
             _dbContext = context;
-            _mapper = mapper;
-            _sempahoreClient = semaphoreClient;
+            _mapper = mapper; ;
         }
 
         public async Task<User> CreateUserAsync(User user)
@@ -80,35 +78,45 @@ namespace api.dataaccess
             return user?.Contact != null;
         }
 
-        public async Task<int> GetUserIdByContactNumberAsync(string number)
-        {
-            var user = await _dbContext.TblUsers
-                    .Where(u => u.Contact == number)
-                    .FirstOrDefaultAsync();
-
-            var userId = user.Id;
-
-            return userId;
-        }
-
+   
         public async Task<UserOtp> UpsertUserOtpAsync(string number, int otpCode)
         {
-              
-                var userId = await GetUserIdByContactNumberAsync(number);
+            try
+            {
 
-                var otpData = await _dbContext.TblUserOtp
-                            .Where(o => o.UserId == userId)
-                            .FirstOrDefaultAsync();
+                var id = await GetUserIdByContactNumberAsync(number);
+
+                var userId = id;
+
+                var userOtp = await _dbContext.TblUserOtp
+                    .Where(u => u.UserId == userId)
+                    .FirstOrDefaultAsync();
 
                 var otp = new UserOtp()
                 {
                     UserId = userId,
                     OtpCode = otpCode
-                };            
+                };
 
-                var updateOtp = _dbContext.TblUserOtp.Update(_mapper.Map<TblUserOtp>(otp));
-                return _mapper.Map<UserOtp>(otp);
-            
+                if (userOtp == null)
+                {
+                    var entity = await _dbContext.Set<TblUserOtp>().AddAsync(_mapper.Map<TblUserOtp>(otp));
+                    await _dbContext.SaveChangesAsync();
+                    return _mapper.Map<UserOtp>(entity.Entity);
+                }
+
+                _mapper.Map(otp, userOtp); // Map the properties from otp to userOtp
+                _dbContext.Update(userOtp);
+
+                await _dbContext.SaveChangesAsync();
+
+                return _mapper.Map<UserOtp>(userOtp);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
         }
 
         public async Task<int> GetUserOtp(int userId)
@@ -120,6 +128,19 @@ namespace api.dataaccess
 
             return otp;
         }
+
+        private async Task<int> GetUserIdByContactNumberAsync(string number)
+        {
+            var user = await _dbContext.TblUsers
+                    .Where(u => u.Contact == number)
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync();
+
+            return user.Id;
+
+
+        }
+
 
     }
 }
