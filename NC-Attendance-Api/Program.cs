@@ -9,7 +9,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting.Internal;
 using Org.BouncyCastle.Crypto.Utilities;
-using SmsClient.Services;
 using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,7 +26,6 @@ builder.Services
     .AddScoped<IScheduleDataAccess, ScheduleDataAccess>()
     .AddScoped<ISubjectBusinessLayer, SubjectBusinessLayer>()
     .AddScoped<ISubjectDataAccess, SubjectDataAccess>()
-    .AddScoped<ISemaphoreSmsClient, SemaphoreSmsClient>()
 
     .AddSingleton<HttpClient>();
 
