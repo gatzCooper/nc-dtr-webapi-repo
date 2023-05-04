@@ -45,7 +45,7 @@ namespace api.dataaccess
         public async Task<User> GetUserByemail(string email, string password)
         {
             var user = await _dbContext.TblUsers
-                .Where(u => u.email == email && u.Password == password)
+                .Where(u => u.Username == email && u.Password == password)
                 .AsNoTracking()
                 .FirstOrDefaultAsync();
 

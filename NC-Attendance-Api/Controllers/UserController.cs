@@ -32,17 +32,17 @@ namespace NC_Attendance_Api.Controllers
             }
         }
 
-        [HttpPut("{userName}")]
-        public async Task<IActionResult> UpdateUser(string userName, [FromBody] User user)
+        [HttpPut]
+        public async Task<IActionResult> UpdateUser([FromBody] User user)
         {
             try
             {
-                var userData = await _userBusinessLayer.GetUserByUsernameAsync(userName);
+                var userData = await _userBusinessLayer.GetUserByUsernameAsync(user.userName);
 
                 if (userData == null)
                     return NotFound();
 
-                user.userName = userName;
+                user.userName = user.userName;
 
                 await _userBusinessLayer.Save(userData);
                 return Ok();
